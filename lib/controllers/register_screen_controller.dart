@@ -8,10 +8,10 @@ class RegisterScreenController with ChangeNotifier {
 
   register() async {
     try {
-      final response = await AppDatas.dioClient.postRequest(
+      final response = await ApiBase.dioClient.postRequest(
           path: '/kayit.php',
           body: {'name': nameController.text, 'email': emailController.text, 'password': passwordController.text});
-      if (response.statusCode == 200) {
+      if (response.data['success']) {
         debugPrint(response.data.toString());
       } else {
         debugPrint(response.statusMessage);
