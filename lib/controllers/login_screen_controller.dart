@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app_api/API/appdatas.dart';
-import 'package:todo_app_api/view/register_screen.dart';
+import 'package:todo_app_api/view/home_screen.dart';
 
 class LoginScreenController with ChangeNotifier {
   var emailController = TextEditingController();
@@ -12,7 +12,7 @@ class LoginScreenController with ChangeNotifier {
           .postRequest(path: '/login.php', body: {'email': emailController.text, 'password': passwordController.text});
       if (response.data['success']) {
         debugPrint(response.data.toString());
-        Route route = MaterialPageRoute(builder: (context) => const RegisterScreen());
+        Route route = MaterialPageRoute(builder: (context) => const HomeScreen());
         return route;
       } else {
         debugPrint(response.statusMessage);
